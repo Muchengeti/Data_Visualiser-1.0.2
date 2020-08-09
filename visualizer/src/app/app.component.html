@@ -1,0 +1,34 @@
+<div *ngIf="isIE && !isIE11">
+  <div class="ie-error-text-container">
+    <h1 class="ie-error-text-header">
+      Internet Explorer is not supported
+    </h1>
+    <p class="ie-error-text">
+      We recommend using Chrome, Firefox, Edge or Safari for the best experience.
+    </p>
+  </div>
+</div>
+
+<div *ngIf="isIE && isIE11">
+  <p class="ie-error-banner">
+      Internet Explorer is not recommended for use, some functionality may not work as intended.
+      We recommend using Chrome, Firefox, Edge or Safari for the best experience.
+  </p>
+
+  <!-- <div class="ie-container">
+    <vis-header ></vis-header>
+  </div> -->
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <div class="ie-container">
+    <vis-footer></vis-footer>
+  </div> -->
+</div>
+<div *ngIf="!isIE && !isIE11" class="container">
+  <!-- <vis-header></vis-header> -->
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- <vis-footer></vis-footer> -->
+</div>

@@ -1,0 +1,7 @@
+---
+geometry: margin=2.45cm
+fontsize: 12pt
+fontfamily: times
+csl: ieee.csl
+bibliography: bibliography.bib
+---

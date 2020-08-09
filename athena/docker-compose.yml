@@ -1,0 +1,15 @@
+version: '3'
+services:
+  db:
+    image: postgres
+  web:
+    image: athena:latest
+    environment:
+      - ATHENA_DB_HOST=db
+      - ATHENA_DB_USERNAME=postgres
+      - ATHENA_DB_PASSWORD=""  
+    command: /bin/bash -c "rm -f /athena/tmp/pids/server.pid; bundle install; rails db:create; rails db:migrate; bundle exec rails s -p 3000 -b '0.0.0.0'"
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db

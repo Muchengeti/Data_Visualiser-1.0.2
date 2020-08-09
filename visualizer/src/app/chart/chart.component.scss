@@ -1,0 +1,179 @@
+.chart-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.dataset-title {
+  text-align: center;
+  white-space: normal;
+  line-height: 1;
+}
+
+mat-button-toggle-group {
+  justify-content: space-around;
+}
+
+mat-button-toggle {
+  text-align: center;
+  width: 100%;
+  color: black;
+}
+
+mat-expansion-panel,
+mat-panel-title {
+  padding: 0;
+  margin-top: 0;
+}
+
+h4 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  text-align: left;
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+p, a {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.center {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.outer-card {
+  padding-top: 0;
+}
+
+.graph-and-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.left-option-title {
+  display: inline-block;
+  width: 65px;
+  padding-right: 10px;
+}
+
+.left-option-buttons {
+  width: 169px;
+}
+
+.option{
+  width: 100%;
+  margin-bottom: 10px;
+  .mat-button-toggle-disabled {
+    color: #C0C0C0;
+  }
+}
+
+.main-div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 65vh; //todo make this not hardcoded
+}
+
+.spacing {
+  height: 40px;
+}
+
+.content {
+  display: flex;
+  width: 100%;
+}
+
+.axis-options {
+  width: 300px;
+}
+
+.graph {
+  display: flex;
+  width: calc(100vw - 350px);
+  height: 73vh;
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  width: 244px;
+}
+
+.button-row button,
+.button-row a {
+  min-width: 73px;
+}
+
+.figshare-image {
+  color: darkcyan;
+  cursor: pointer;
+  padding-right: 10px;
+}
+
+.license-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.license-container a {
+  text-decoration: underline;
+  color: black;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.license-container img {
+  height: 100%;
+}
+
+.license-container button {
+  font-weight: bold;
+  margin-left: 11px;
+}
+
+.cc-license {
+  width: 104px;
+}
+
+.doi-icon {
+  padding-left: 10px;
+}
+
+.embed-button {
+  display: flex;
+  justify-content: center;
+}
+
+.no-margin-bot {
+  margin-bottom: 0 !important;
+}
+
+@media all and (max-width: 800px) {
+  .content {
+    flex-direction: column-reverse;
+  }
+
+  .axis-options {
+    width: 300px;
+    margin: 45px auto auto;
+  }
+
+  .graph {
+    width: 100vw;
+  }
+}
+
+@media all and (max-height: 700px) {
+  .graph{
+    height: 510px;
+  }
+}

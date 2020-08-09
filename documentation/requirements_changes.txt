@@ -1,0 +1,29 @@
+1.1 Purpose needs updating 
+1.2 Change Figshare Data Visualiser to proper title
+1.2 Might need to be updated, as actual objective wasnt to entice new users as much as just improve old Figshare
+1.3.1 FDV to proper title
+1.3.1 probably update the names of System Back End and System Front End, and then update the corresponding references in the paragraph below
+1.3.2 FDV to proper title
+1.3.3 FDV to proper title
+1.3.3 Maybe remove casual users, as this wasn't the actual audience 
+1.3.4 Add in requirements of branding with Victoria
+3.1 Potentially rename System Frontend and System Backend 
+3.1 Maybe talk about the ngrx store from the Frontend
+3.2 Remove Following Use Cases: 
+    6. Compare two Datasets
+    8. Explore Data (IV Curves reference)
+    10. Export as Excel Doc (Change to CSV doc)
+    13. Mailing List Sign Up 
+    14. Recieving new dataset notification
+3.3 Remove reference to people not originally wanting to view the data 
+3.4 Dont use specific/arbitrary numbers for this (Comment from Quilty)
+3.5 Does UML need updating?
+3.8 Specifically reference AWS as final resting place?
+4. Remove first paragraph 
+4. External Interfaces (data file to dataset)
+4. Use Cases Update to reflect changes to use cases above
+4. Performance Requirements (Remove?)
+5.1 Add in all iterations from tri2
+5.1 fix the numbering
+5.2 Fix budget, either remove, or update to reference AWS 
+5.3.10 Remove?

@@ -1,0 +1,7 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+declare -a images=("visualizer" "athena" "reverseproxy")
+
+rsync -av --progress -e "ssh -i $1" -r . "$2:~" 

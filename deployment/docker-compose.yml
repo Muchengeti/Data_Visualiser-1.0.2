@@ -1,0 +1,28 @@
+version: '3'
+services:
+  reverseproxy:
+    image: reverseproxy:latest
+    ports:
+      - 80:80
+    restart: always
+    depends_on:
+      - visualizer
+      - athena
+  visualizer:
+    image: visualizer:latest
+    restart: always
+  db:
+    image: postgres
+  athena:
+    image: athena:latest
+    environment:
+      - ATHENA_DB_HOST=db
+      - ATHENA_DB_USERNAME=postgres
+      - ATHENA_DB_PASSWORD=""  
+      - RAILS_ENV=production
+      - SECRET_KEY_BASE
+      - DISABLE_DATABASE_ENVIRONMENT_CHECK=1
+    command: /bin/bash -c "rm -f /athena/tmp/pids/server.pid; bundle install; rails db:drop; rails db:create; rails db:migrate; bundle exec rails s -p 80 -b 0.0.0.0"
+    depends_on:
+      - db
+    restart: always

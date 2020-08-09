@@ -1,0 +1,98 @@
+mat-row:nth-child(even){
+  background-color: #F8F8F8;
+}
+
+mat-row:nth-child(odd){
+  background-color: #F8F8F8;
+}
+
+.error-warning{
+  color: red;
+  padding-right: 10px;
+}
+
+.valid{
+  cursor: pointer;
+  display:flex;
+  justify-content: flex-start;
+  flex: 100%;
+}
+
+.invalid{
+  cursor: pointer;
+  display:flex;
+  justify-content: flex-start;
+  flex: 100%;
+  color: rgba(153, 153, 102,1);
+  background-color: rgba(153, 153, 102,0.1);
+}
+
+.table-class{
+  border-spacing: 0; /* Removes the cell spacing via CSS */
+  border-collapse: collapse;
+  padding: 0;
+  mat-row:hover {background-color: #EBF4FA}
+}
+
+.header-row{
+  background-color: #E8E8E8	;
+}
+
+.header-cell{
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.mat-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.mat-column-figshare{
+  flex: 0 0 40px;
+}
+
+.mat-column-date{
+  flex: 0 0 100px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 80px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.home-button {
+  text-decoration: none;
+  color: white;
+}
+
+.filter {
+  margin: 0 auto;
+  width: 250px;
+  padding-top: 5px;
+}
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 65vh; //todo make this not hardcoded
+}
+
+p {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.spacing {
+  height: 40px;
+}

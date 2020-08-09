@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: space-between;
+  overflow-x: hidden;
+}
+
+.ie-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
+.ie-error {
+  display: flex;
+  height: 100vh;
+}
+
+.ie-error-text-container {
+   width: 500px;
+   height: 300px;
+   margin: auto;
+   text-align: center;
+}
+
+.ie-error-banner {
+  background-color: orange;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-family: 'Georgia', serif
+}
+
+.ie-error-text-header {
+  text-align: center;
+  font-family: "Georgia", serif;
+  font-size: 45px;
+}
+
+.ie-error-text {
+  text-align: center;
+  font-family: "Georgia", serif;
+  font-size: 25px;
+}

@@ -1,0 +1,64 @@
+.footer {
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color: rgb(29, 38, 36);
+  margin: 25px 0 0 0;
+  position: relative;
+  clear: both;
+  min-height: 100px;
+  border-top: 6px solid rgb(0, 71, 47);
+}
+
+a {
+  text-decoration: none;
+}
+
+.rri-text-vic-logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-vic {
+  padding-top: 1.1em;
+  width: 200px;
+}
+
+.footer-text {
+  color: white;
+  font-family: 'Georgia', 'IBM Plex Sans', sans-serif;
+}
+
+.rri-text {
+  font-size: 20px;
+}
+
+.copyright-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.copyright-text {
+  margin-top: 0;
+  font-size: 12px;
+}
+
+@media all and (max-width: 620px) {
+  .footer {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .logo-vic {
+    width: 135px;
+    padding-top: 0.5em;
+  }
+
+  .copyright-text {
+    font-size: 10px;
+  }
+
+  .rri-text {
+    font-size: 14px;
+  }
+}

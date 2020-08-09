@@ -1,0 +1,220 @@
+<div *ngIf="!graphLoaded" class="container">
+  <mat-spinner></mat-spinner>
+  <span class="spacing"></span>
+  <p>Loading dataset</p>
+</div>
+<div *ngIf="graphLoaded">
+    <div>
+      <mat-toolbar style="height: 90px; background-color: transparent;">
+        <a href="{{getFigshareURL()}}" style="height: 40px">
+          <img src="../assets/figshare.png"
+           class="figshare-image"
+           [title]="linkMessage"
+           width="40px"
+           height="40px">
+        </a>
+        <p class="dataset-title">
+          {{datasetTitle}}
+        </p>
+      </mat-toolbar>
+    </div>
+
+    <div class="graph-and-options content">
+      <div class="axis-options">
+        <mat-expansion-panel [expanded]="true">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Independent variable</b>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="option">
+            <mat-button-toggle-group
+              name="dependencySelector"
+              aria-label="Dependency selector">
+              <mat-button-toggle
+                *ngFor="let d of DEPENDENCY_VALUES"
+                [value]="d"
+                (change)="setDependency($event)"
+                [checked]="dependency===d">
+                {{d.fullName}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <div class="option">
+            <h4>Constant</h4>
+            <mat-button-toggle-group
+              name="constantSelector"
+              aria-label="Constant selector">
+              <mat-button-toggle
+                *ngFor="let c of DEPENDENCY_VALUES"
+                [value]="c"
+                (change)="setConstant($event)"
+                [checked]="constant===c"
+                [disabled]="dependency===c">
+                {{c.fullName}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <div class="option no-margin-bot">
+            <mat-form-field style="width: 243px">
+              <mat-select
+                [placeholder]="constant.fullName"
+                [(value)]="constantValue"
+                (valueChange)="constantValueSet()">
+                <mat-option
+                  *ngFor="let v of currentConstantValues"
+                  [value]="v">
+                  {{v + constant.unit}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="option">
+            <div class="left-option-title">
+              <b>Scale</b>
+            </div>
+            <mat-button-toggle-group class="left-option-buttons" name="xScaleSelector" aria-label="X scale selector">
+              <mat-button-toggle
+                *ngFor="let s of SCALES"
+                [value]="s"
+                (change)="setXScale($event)"
+                [checked]="getXScale()===s">
+                {{s}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Dependent variable</b>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="option">
+            <mat-button-toggle-group
+              style="width: 243px"
+              name="yAxisSelector"
+              aria-label="Y axis selector">
+              <mat-button-toggle
+                *ngFor="let y of Y_VALS"
+                [value]="y"
+                (change)="setYAxis($event)"
+                [checked]="yAxis===y">
+                {{y.variable}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <div class="option">
+            <div class="left-option-title">
+              <b>Scale</b>
+            </div>
+            <mat-button-toggle-group class="left-option-buttons" name="yScaleSelector" aria-label="Y scale selector">
+              <mat-button-toggle
+                *ngFor="let s of SCALES"
+                [value]="s"
+                (change)="setYScale($event)"
+                [checked]="getYScale()===s">
+                {{s}}</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Appearance</b>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="option">
+            <div class="left-option-title">
+              <b>Colours</b>
+            </div>
+            <mat-button-toggle-group class="left-option-buttons" name="contrastSelector" aria-label="contrast selector">
+              <mat-button-toggle *ngFor="let s of CONTRAST" [value]="s" (change)="setContrast($event)" [checked]="getContrast()===s">
+                <img [src]="'./assets/' + getContrastImageName(s)" style="height: 20px"/>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <div class ="option">
+            <div class="left-option-title">
+              <b>Line</b>
+            </div>
+            <mat-button-toggle-group class="left-option-buttons" name="lineTension" aria-label="line tension">
+              <mat-button-toggle *ngFor="let s of LINES" [value]="s" (change)="setLineTension($event)" [checked]="getLineTension()===s">
+                <img [src]="'./assets/' + getLineImageName(s)" style="height: 20px"/>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <div class ="option no-margin-bot">
+            <div class="left-option-title">
+              <b>Points</b>
+            </div>
+            <mat-button-toggle-group class="left-option-buttons" name="pointSelector" aria-label="point selector">
+              <mat-button-toggle *ngFor="let s of POINTS" [value]="s" (change)="setPoints($event)" [checked]="getPoints()===s">
+                <mat-icon color="primary">
+                  {{s}}
+                </mat-icon>
+              </mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+
+          <div class ="option no-margin-bot">
+            <div class="left-option-title" style="padding-right: 4px">
+              <b>Point size</b>
+            </div>
+            <mat-slider style="width: 182px" min="0" max="10" step="0.5" [value]="pointSize" (change)="setPointSize($event)"></mat-slider>
+          </div>
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>Export</b>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+
+          <div class="button-row">
+            <button mat-raised-button title="Download as PNG" (click)="downloadPNG()">
+              <mat-icon color="primary">image</mat-icon>
+            </button>
+            <button mat-raised-button title="Download as CSV" (click)="downloadCSV()">
+              <mat-icon color="primary">description</mat-icon>
+            </button>
+            <button mat-raised-button title="Print" (click)="print()">
+              <mat-icon color="primary">print</mat-icon>
+            </button>
+          </div>
+          <hr/>
+          <div class="license-container">
+            <div class="cc-license">
+              <a rel="license" href="http://creativecommons.org/licenses/by/4.0/" [title]="ccLicense">
+                <img alt="Creative Commons Licence" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/88x31.png" />
+              </a>
+            </div>
+            <button mat-raised-button (click)="copyDOI()" value="Copy DOI">
+              {{doiButton}}<mat-icon title="Copy to Clipboard" class="doi-icon" color="primary">file_copy</mat-icon>
+            </button>
+          </div>
+          <hr/>
+          <div class="embed-button">
+              <button mat-raised-button (click)="copyMessage()" value="click to copy">
+                Copy Embed Code<mat-icon title="Copy to Clipboard" class="doi-icon" color="primary">code</mat-icon>
+              </button>  
+          </div> 
+        </mat-expansion-panel>
+      </div>
+
+      <vis-base-chart
+        class="graph"
+        #baseChart>
+      </vis-base-chart>
+    </div>
+</div>
+
+

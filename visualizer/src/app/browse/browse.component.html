@@ -1,0 +1,77 @@
+<div *ngIf="!lists" class="spinner-container">
+  <mat-spinner></mat-spinner>
+  <span class="spacing"></span>
+  <p>Loading datasets</p>
+
+</div>
+<div *ngIf="lists">
+  <div class="filter">
+    <form>
+      <mat-form-field class="filter">
+        <input matInput #key type='text'  [(ngModel)]="keyword"   (ngModelChange)="filterByKeyword()" placeholder="Filter" name="Filter">
+      </mat-form-field>
+    </form>
+  </div>
+  <mat-table
+    class="table-class"
+    [dataSource]="lists"
+    [style.margin-left]="spacing"
+    [style.margin-right]="spacing">
+
+    <ng-container matColumnDef="title">
+      <mat-header-cell class="header-cell" (click)="sortByDatasetName()" *matHeaderCellDef>
+        Datasets
+        <mat-icon
+          style="color: black;">
+          {{titleSortIcon}}
+        </mat-icon>
+      </mat-header-cell>
+      <mat-cell  *matCellDef="let item" [ngClass] = "{valid: item.cached, invalid: !item.cached}" (click)="selectRow(item)">
+        <ng-container *ngIf="!item.cached">
+          <mat-icon
+            class="error-warning"
+	          [title]="errorMessage">
+            warning
+          </mat-icon>
+        </ng-container>
+        {{formatTitle(item.title)}}
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container  matColumnDef="date">
+      <mat-header-cell class="header-cell" (click)="sortByPublishedDate()" *matHeaderCellDef>
+        Publication Date
+        <mat-icon
+          style="color: black;">
+          {{publishedDateSortIcon}}
+        </mat-icon>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let item" [ngClass] = "{valid: item.cached, invalid: !item.cached}" (click)="selectRow(item)">
+        {{item.published_date | date}}
+      </mat-cell>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="figshare" >
+      <mat-header-cell class="header-cell" *matHeaderCellDef>
+
+      </mat-header-cell>
+      <mat-cell  *matCellDef="let item" [ngClass] = "{valid: item.cached, invalid: !item.cached}">
+        <a href="{{getFigshareURL(item)}}"><img src="../assets/figshare.png"
+          style="color: darkcyan;"
+          [title]="linkMessage"
+        width="40px"
+        height="40px"></a>
+        <ng-container *ngIf="!item.cached">
+
+        </ng-container></mat-cell>
+    </ng-container>
+
+
+    <mat-header-row class="header-row" *matHeaderRowDef="['title', 'date', 'figshare']"></mat-header-row>
+
+    <mat-row *matRowDef="let row; columns: ['title', 'date', 'figshare']" ></mat-row>
+  </mat-table>
+</div>

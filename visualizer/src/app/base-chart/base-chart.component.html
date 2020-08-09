@@ -1,0 +1,26 @@
+<div class="chart">
+  <div class="line-buttons-top" *ngIf="this.windowWidth >= 800">
+    <button mat-icon-button (click)="selectAll()">
+      <mat-icon title="Show all">done_all</mat-icon>
+    </button>
+    <button mat-icon-button title="Hide all" (click)="deselectAll()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div *ngIf="!datasets?.length" class="no-data">
+    <p class="no-data-text">No data to display</p>
+  </div>
+
+  <canvas id="chart-canvas" class="canvas"></canvas>
+
+  <div class="line-buttons-bottom" *ngIf="this.windowWidth < 800">
+    <button mat-icon-button title="Show all" (click)="selectAll()">
+      <mat-icon>done_all</mat-icon>
+    </button>
+    <button mat-icon-button title="Hide all" (click)="deselectAll()">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>
+

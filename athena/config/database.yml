@@ -1,0 +1,29 @@
+# SQLite version 3.x
+#   gem install sqlite3
+#
+#   Ensure the postgres gem is defined in your Gemfile
+#   gem 'pg'
+#
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: athena_db_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: athena_db_test
+
+production:
+  <<: *default
+  encoding: unicode
+  host: <%= ENV.fetch("ATHENA_DB_HOST", "localhost") %>
+  username: <%= ENV.fetch("ATHENA_DB_USERNAME", "root") %>
+  password: <%= ENV.fetch("ATHENA_DB_PASSWORD", "") %>
+  database: athena_db_production

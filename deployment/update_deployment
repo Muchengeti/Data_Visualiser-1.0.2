@@ -1,0 +1,11 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+git pull --rebase
+./build
+./transfer_images $1 $2
+ssh -i $1 $2 /bin/bash << EOF
+  ./load_images
+  ./deploy
+EOF

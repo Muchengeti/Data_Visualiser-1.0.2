@@ -1,0 +1,17 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+declare -a images=("visualizer" "athena" "reverseproxy")
+
+for image in "${images[@]}"
+do
+    docker build "../$image" -t "$image"
+done
+
+mkdir -p images
+
+for image in "${images[@]}"
+do
+    docker save -o "images/$image" "$image:latest"
+done

@@ -1,0 +1,10 @@
+#!/bin/bash
+scriptdir="$(dirname "$0")"
+cd "$scriptdir"
+
+declare -a images=("visualizer" "athena" "reverseproxy")
+
+for image in "${images[@]}"
+do
+	docker load -i "images/$image"
+done

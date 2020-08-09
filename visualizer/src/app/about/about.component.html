@@ -1,0 +1,78 @@
+<div class="content">
+  <mat-card>
+  <h3>
+    The Robinson Research Institute high-temperature superconducting wire critical current database
+  </h3>
+  <p>
+    This database comprises high temperature superconducting wire performance data measured at the Robinson Research
+    Institute of Victoria University of Wellington. Its principal focus is on commercially available materials, and it aims
+    to provide the most comprehensive data available, enabling informed materials selection and the efficient
+    modelling, design and construction of high temperature superconducting machines and devices.
+  </p>
+  <p>
+    The database will continue to be expanded over time, and submissions of additional (commercially-available) materials
+    for measurement and potential inclusion in the database <a href="mailto:rri-admin@vuw.ac.nz?subject=RRI HTS wire critical current database" class="footer-text">
+    are welcomed.
+  </a>
+  </p>
+  <h4>
+    About the Institute
+  </h4>
+  <p>
+    The multidisciplinary Robinson Research Institute melds innovative engineering and applied physics to build advanced
+    technologies for businesses worldwide. We are a world-leading team of scientists and engineers who create and commercialise
+    applications of high temperature superconductors and other technologies together with our industry partners. Want to find out
+    more about us? Visit our <a href="https://www.victoria.ac.nz/robinson">main website</a>.
+  </p>
+
+  <img src="../assets/about-page-image.jpg" class="hts-image" align="right">
+
+  <h4>
+    About the measurements
+  </h4>
+  <p>
+    Superconductor characterisation data is acquired on our in-house SuperCurrent 𝘐c measurement system. This system facilitates
+    measurements of critical currents up to 1000 A at temperatures down to 15 K and in magnetic fields up to 8 T. A description
+    of the system can be found in N. M. Strickland, C. Hoffmann, and S. C. Wimbush,<a href="https://dx.doi.org/10.1063/1.4902139"><i>
+    A 1 kA-class cryogen-free critical current characterization system for superconducting coated conductors</i></a>, Rev. Sci. Instrum.
+    85 (2014) 113907.
+    Purchasing enquiries can be directed to <a href="https://www.hts-110.com">HTS-110 Limited</a>.
+  </p>
+
+  <h4>About the data</h4>
+  <p>
+    Complete datasets are stored on <a href="https://figshare.com/collections/A_high_temperature_superconducting_HTS_wire_critical_current_database/2861821">
+    figshare</a>, where they are publicly accessible in their entirety. Each dataset is a comprehensive characterisation of the
+    performance of a particular sample wire over a wide range of potential operating conditions of temperature, magnetic field,
+    and field angle. Data can be viewed in terms of the absolute critical current of the wire, or normalised to its width. 𝘯-value
+    data is also available. The database is described in S. C. Wimbush and
+    N. M. Strickland, <a href="https://dx.doi.org/10.1109/TASC.2016.2628700"><i>A public database of high-temperature superconductor critical current data</i></a>, IEEE Trans. Appl. Supercond. 27
+    (2017) 8000105.
+  </p>
+
+  <h4>About the data visualiser</h4>
+  <p>
+    This data visualiser provides a means of direct graphical access to the wire performance datasets. Desired performance curves can
+    be accessed and exported for further use. The latest datasets are automatically sourced from the underlying figshare database.
+  </p>
+  <p>
+    The data visualiser web application was developed by:
+  </p>
+  <ul>
+    <li *ngFor="let dev of developers">
+      <a href="{{dev.linkedin}}">
+        {{dev.name}}
+        <img src="../../assets/linkedin.svg" style="width: 15px; height: 15px;">
+      </a>
+    </li>
+  </ul>
+
+  <h4>Copyright</h4>
+  <p>
+    The design of these webpages and the data visualiser web application are Copyright © {{getCurrentYear()}} Victoria University of Wellington.
+    The individual datasets presented are licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) licence. You must
+    give appropriate attribution for any reuse of the data provided here. Permission is granted for republication of graphical images
+    exported from this web application under the same terms.
+  </p>
+  </mat-card>
+</div>

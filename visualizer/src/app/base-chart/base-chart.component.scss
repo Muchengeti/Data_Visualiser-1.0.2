@@ -1,0 +1,45 @@
+.line-buttons-top {
+  float: right;
+  position: relative;
+  height: 0;
+}
+
+.line-buttons-bottom {
+  display: flex;
+  justify-content: center;
+}
+
+.no-data {
+  text-align: center;
+  float: right;
+  position: relative;
+  left: 25px;
+  top: 60px;
+  height: 0;
+  width: 100%;
+}
+
+.no-data-text {
+  font-size: 40px;
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.chart {
+  width: 100%;
+}
+
+@media all and (max-width: 800px) {
+  .chart {
+    width: 97%;
+  }
+}
+
+@media all and (max-width: 420px) {
+  .no-data-text {
+    font-size: 25px;
+  }
+
+  .chart {
+    width: 96%;
+  }
+}
